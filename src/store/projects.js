@@ -14,7 +14,7 @@ const slice = createSlice({
     },
     projectRemoved: (projects, action) => {
       projects.splice(
-        projects.findIndex((bug) => bug.id === action.payload.id)
+        projects.findIndex((project) => project.id === action.payload.id)
       );
     },
   },
