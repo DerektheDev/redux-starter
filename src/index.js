@@ -20,8 +20,17 @@ store.dispatch(userAdded({ name: "User 1" }));
 // store.dispatch(bugAssignedToUser({ bugId: 1, userId: 1 }));
 // store.dispatch(bugResolved({ id: 1 }));
 
+store.dispatch((dispatch, getState) => {
+  // call API
+  // when resolved, dispatch action to update store
+  dispatch({ type: "bugsReceived", bugs: [1, 2] });
+  console.log("getState", getState());
+});
+
 // const unresolvedBugs = getUnresolvedBugs(store.getState());
 // console.log(unresolvedBugs);
 
 const bugs = getBugsByUser(2)(store.getState());
 console.log(bugs);
+
+store.dispatch({ type: "error", payload: { message: "Error message" } });
